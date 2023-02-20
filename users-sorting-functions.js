@@ -23,6 +23,7 @@ function updateSortOrder(clickedColumn) {
 }
 
 function sortUsers() {
+    console.log("Викликаєм функцію сортування");
     // @todo: load users with different get params
     users.sort(function (a, b) {
         if (a[sort] < b[sort]) {

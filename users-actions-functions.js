@@ -7,21 +7,21 @@ function loadUsers() {
         firstName: 'Mark',
         lastName: 'Otto',
         email: 'Mark@otto.com',
-        phoneNumber: +380951425213
+        phoneNumber: '+38 (095)-142-52-13'
     });
     users.push({
         id: 2,
         firstName: 'Jacob',
         lastName: 'Thornton',
         email: 'Jac@fat.ua',
-        phoneNumber: +380912142513
+        phoneNumber: '+38 (091)-214-25-13'
     });
     users.push({
         id: 3,
         firstName: 'Nikk',
         lastName: 'Tikker',
         email: 'Nikk@TKR.ua',
-        phoneNumber: +380921428218
+        phoneNumber: '+38 (092)-142-82-18'
     });
 
 }
