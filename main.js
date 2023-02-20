@@ -1,11 +1,4 @@
 $(document).ready(function () {
-    $.ajax({
-        url: "https://jsonplaceholder.typicode.com/todos/1",
-        type: 'GET',
-        success: function(res) {
-            console.log(res);
-        }
-    });
     loadUsers();
     refreshUsersTable();
     $("#phone").inputmask({"mask": "+38 (099)-999-99-99"});
