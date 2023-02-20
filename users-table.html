@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Hello, world!</title>
+</head>
+<body>
+<br>
+<div class="container-fluid">
+    <table class="table table-dark table-striped">
+        <thead>
+        <tr>
+            <th class="custom-sort-column" data-sort="id" scope="col">#</th>
+            <th class="custom-sort-column" data-sort="firstName" scope="col">First Name</th>
+            <th class="custom-sort-column" data-sort="lastName" scope="col">Last Name</th>
+            <th class="custom-sort-column" data-sort="email" scope="col">Email</th>
+            <th class="custom-sort-column" data-sort="phoneNumber" scope="col">Phone Number</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<button type="button" class="btn btn-primary" id="showAddUserModal">Add user</button>
+
+<div class="modal fade" id="add_user_modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="add_user_form">
+                    <input type="hidden" id="user-id" name="user-id">
+                    <div class="mb-3">
+                        <label for="first_name" class="col-form-label">First_Name:</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="last_name" class="col-form-label">Last_Name:</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="phone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="col-form-label">Email@:</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="add_user">Add User</button>
+                <button type="button" style="display: none;" class="btn btn-primary" id="edit_user">Edit User</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js" integrity="sha512-jTgBq4+dMYh73dquskmUFEgMY5mptcbqSw2rmhOZZSJjZbD2wMt0H5nhqWtleVkyBEjmzid5nyERPSNBafG4GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript" src="/JS/UsersProject/users-event-listeners.js"></script>
+<script type="text/javascript" src="/JS/UsersProject/users-form-validation.js"></script>
+<script type="text/javascript" src="/JS/UsersProject/users-template-functions.js"></script>
+<script type="text/javascript" src="/JS/UsersProject/users-sorting-functions.js"></script>
+<script type="text/javascript" src="/JS/UsersProject/users-actions-functions.js"></script>
+<script type="text/javascript" src="/JS/UsersProject/main.js"></script>
+
+</body>
+</html>
