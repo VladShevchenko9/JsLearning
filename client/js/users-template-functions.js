@@ -36,6 +36,7 @@ function parseUsersTable() {
 }
 
 function showEditUserModal(button) {
+    clearUserWarning();
     const id = parseInt(button.data("user-id"));
     const user = users.find(user => user.id === id);
     $('#user-id').val(user.id);
@@ -50,6 +51,7 @@ function showEditUserModal(button) {
 }
 
 function showAddUserModal() {
+    clearUserWarning();
     $('#user-id').val('');
     $('#first_name').val('');
     $('#last_name').val('');
@@ -59,4 +61,9 @@ function showAddUserModal() {
     $('#add_user').show();
     $('#edit_user').hide();
     $('#add_user_modal').modal('show');
+}
+
+function clearUserWarning() {
+    $('#userValidationAlert').hide();
+    $('#userValidationAlert').html('');
 }

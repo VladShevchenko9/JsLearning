@@ -1,5 +1,5 @@
-$(document).ready(function () {
-    loadUsers();
+$(document).ready(async function () {
+    await loadUsers();
     refreshUsersTable();
     $("#phone").inputmask({"mask": "+38 (099)-999-99-99"});
 
@@ -10,11 +10,21 @@ $(document).ready(function () {
         refreshUsersTable();
     });
 
-    $(`#add_user`).click(function () {
-        if (userFormIsValid()) {
-            addUser();
+    $(`#add_user`).click(async function () {
+        try {
+            await addUser();
             refreshUsersTable();
             $('#add_user_modal').modal('hide');
+        } catch (e) {
+            if (e.hasOwnProperty("violations")) {
+                const alertDiv = $("#userValidationAlert");
+                let divHtml = '';
+                for (const violation of e.violations) {
+                    divHtml += violation + '<br>';
+                }
+                alertDiv.html(divHtml);
+                alertDiv.show();
+            }
         }
     });
 
