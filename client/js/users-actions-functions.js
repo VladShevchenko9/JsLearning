@@ -18,6 +18,21 @@ async function loadUsers() {
     });
 }
 
+async function showUser(id) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: API_HOST + "/user/" + id,
+            type: "GET",
+            success: function (response) {
+                resolve(response.user);
+            },
+            error: function (error) {
+                reject(error.responseJSON);
+            }
+        });
+    });
+}
+
 async function addUser() {
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -40,10 +55,22 @@ async function addUser() {
     });
 }
 
-function deleteUser(button) {
-    const id = parseInt(button.data("user-id"));
-    users = users.filter(user => user.id !== id);
+async function deleteUser(id) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: API_HOST + "/user/" + id,
+            type: "DELETE",
+            success: function (response) {
+                console.log(response);
+                resolve();
+            },
+            error: function (error) {
+                reject(error.responseJSON);
+            }
+        });
+    });
 }
+
 
 function editUser() {
     const id = parseInt($('#user-id').val());

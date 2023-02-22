@@ -35,10 +35,18 @@ function parseUsersTable() {
     });
 }
 
-function showEditUserModal(button) {
+async function showEditUserModal(button) {
     clearUserWarning();
     const id = parseInt(button.data("user-id"));
-    const user = users.find(user => user.id === id);
+    let user = null;
+    try {
+        user = await showUser(id);
+    } catch (e) {
+        if (e.hasOwnProperty("error")) {
+           alert(e.error);
+           return;
+        }
+    }
     $('#user-id').val(user.id);
     $('#first_name').val(user.firstName);
     $('#last_name').val(user.lastName);
@@ -67,3 +75,4 @@ function clearUserWarning() {
     $('#userValidationAlert').hide();
     $('#userValidationAlert').html('');
 }
+

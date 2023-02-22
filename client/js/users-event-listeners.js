@@ -1,6 +1,8 @@
 function applyEventListeners() {
-    $('button.delete-user').click(function () {
-        deleteUser($(this));
+    $('button.delete-user').click(async function () {
+        const id = parseInt($(this).data("user-id"));
+        await deleteUser(id);
+        await loadUsers();
         refreshUsersTable();
     });
 

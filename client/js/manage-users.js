@@ -3,6 +3,7 @@ $(document).ready(async function () {
     refreshUsersTable();
     $("#phone").inputmask({"mask": "+38 (099)-999-99-99"});
 
+    //@todo: explain it to GIGor
     $('.custom-sort-column').click(function () {
         updateSortOrder($(this));
         parseUsersTable();
