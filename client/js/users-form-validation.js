@@ -49,3 +49,20 @@ function userFormIsValid() {
 
     return true;
 }
+
+function parseApiValidationErrors(e) {
+    if (e.hasOwnProperty("violations")) {
+        const alertDiv = $("#userValidationAlert");
+        let divHtml = '';
+        for (const violation of e.violations) {
+            divHtml += violation + '<br>';
+        }
+        alertDiv.html(divHtml);
+        alertDiv.show();
+        return;
+    }
+
+    if (e.hasOwnProperty("error")) {
+        alert(e.error);
+    }
+}

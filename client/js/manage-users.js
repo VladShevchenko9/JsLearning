@@ -17,15 +17,7 @@ $(document).ready(async function () {
             refreshUsersTable();
             $('#add_user_modal').modal('hide');
         } catch (e) {
-            if (e.hasOwnProperty("violations")) {
-                const alertDiv = $("#userValidationAlert");
-                let divHtml = '';
-                for (const violation of e.violations) {
-                    divHtml += violation + '<br>';
-                }
-                alertDiv.html(divHtml);
-                alertDiv.show();
-            }
+            parseApiValidationErrors(e);
         }
     });
 
@@ -33,11 +25,14 @@ $(document).ready(async function () {
         showAddUserModal();
     });
 
-    $('#edit_user').click(function () {
-        if (userFormIsValid()) {
-            editUser();
+    $('#edit_user').click(async function () {
+        const id = parseInt($('#user-id').val());
+        try {
+            await editUser(id);
             refreshUsersTable();
             $('#add_user_modal').modal('hide');
+        } catch (e) {
+            parseApiValidationErrors(e);
         }
     });
 });

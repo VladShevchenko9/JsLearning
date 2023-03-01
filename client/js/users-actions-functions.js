@@ -72,15 +72,29 @@ async function deleteUser(id) {
 }
 
 
-function editUser() {
-    const id = parseInt($('#user-id').val());
-    for (let user of users) {
-        if (user.id === id) {
-            user.firstName = $('#first_name').val();
-            user.lastName = $('#last_name').val();
-            user.email = $('#email').val();
-            user.phoneNumber = $('#phone').val();
-            break;
-        }
-    }
+async function editUser(id) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: API_HOST + "/user/" + id,
+            type: "PUT",
+            data: {
+                firstName: $('#first_name').val(),
+                lastName: $('#last_name').val(),
+                email: $('#email').val(),
+                phoneNumber: $('#phone').val()
+            },
+            success: function (response) {
+                for (let user of users) {
+                    if (id === user.id) {
+                        user = response.user;
+                        break;
+                    }
+                }
+                resolve();
+            },
+            error: function (error) {
+                reject(error.responseJSON);
+            }
+        });
+    });
 }
